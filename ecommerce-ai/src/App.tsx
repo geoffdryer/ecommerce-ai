@@ -1,30 +1,14 @@
 
-import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function Products() {
-  return <h2>Products</h2>;
-}
-
-function ProductDetail() {
-  return <h2>Product Detail</h2>;
-}
-
-function Cart() {
-  return <h2>Cart</h2>;
-}
-
-function Chatbot() {
-  return <h2>Chatbot</h2>;
-}
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
+import Cart from './pages/Cart';
+import Chatbot from './pages/Chatbot';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <nav style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
         <Link to="/">Home</Link>
         <Link to="/products">Products</Link>
@@ -38,7 +22,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/chatbot" element={<Chatbot />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
