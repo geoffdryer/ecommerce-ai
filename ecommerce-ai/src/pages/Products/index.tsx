@@ -1,15 +1,15 @@
-
-import { products } from '../data/products';
+import { products } from '../../data/products';
 import { Link } from 'react-router-dom';
+import './Products.scss';
 
 const Products = () => {
     return (
         <div>
             <h2>Products</h2>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', justifyContent: 'center' }}>
+            <div className="products-list">
                 {products.map((product) => (
-                    <div key={product.id} style={{ border: '1px solid #ccc', borderRadius: 8, padding: 16, width: 220 }}>
-                        <img src={product.image} alt={product.name} style={{ width: '100%', height: 150, objectFit: 'cover', borderRadius: 4 }} />
+                    <div key={product.id} className="product-card">
+                        <img src={product.image} alt={product.name} className="product-image" />
                         <h3>{product.name}</h3>
                         <p>{product.description}</p>
                         <p><strong>${product.price.toFixed(2)}</strong></p>

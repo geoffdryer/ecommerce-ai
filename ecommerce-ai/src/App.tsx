@@ -1,10 +1,10 @@
 import './App.scss';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Home from './pages/Home';
-import Products from './pages/Products';
-import ProductDetail from './pages/ProductDetail';
-import Cart from './pages/Cart';
-import Chatbot from './pages/Chatbot';
+import Home from './pages/Home/index';
+import Products from './pages/Products/index';
+import ProductDetail from './pages/ProductDetail/index';
+import Cart from './pages/Cart/index';
+import Chatbot from './pages/Chatbot/index';
 
 function App() {
   return (
