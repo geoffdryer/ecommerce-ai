@@ -9,7 +9,7 @@ const Header = () => {
     return (
         <header className="app-header">
             <div className="header-inner">
-                <Link to="/" className="brand">Ecommerce AI</Link>
+                <Link to="/" className="brand">Smart Shop</Link>
                 <nav className="header-nav">
                     <Link to="/products">Products</Link>
                     <Link to="/cart" className="cart-link">Cart{itemCount > 0 && <span className="cart-badge">{itemCount}</span>}</Link>

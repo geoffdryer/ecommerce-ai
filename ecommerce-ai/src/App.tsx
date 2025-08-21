@@ -6,6 +6,7 @@ import ProductDetail from './pages/ProductDetail/index';
 import Cart from './pages/Cart/index';
 import { CartProvider } from './context/CartContext';
 import Header from './components/Header';
+import Chatbot from './components/Chatbot/Chatbot';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <CartProvider>
       <BrowserRouter>
         <Header />
+        <Chatbot />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
