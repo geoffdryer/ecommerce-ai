@@ -1,15 +1,8 @@
 
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import type { Product } from '../../types/product';
 import './Products.scss';
-
-export type Product = {
-    id: number;
-    name: string;
-    description: string;
-    price: number;
-    image: string;
-};
 
 const Products = () => {
     const [products, setProducts] = useState<Product[]>([]);

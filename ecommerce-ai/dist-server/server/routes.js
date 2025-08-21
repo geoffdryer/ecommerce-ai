@@ -8,6 +8,15 @@ const router = express.Router();
 router.get("/products", (_req, res) => {
     res.json(products);
 });
+// Get product by ID
+router.get("/products/:id", (req, res) => {
+    const id = Number(req.params.id);
+    const product = products.find((p) => p.id === id);
+    if (!product) {
+        return res.status(404).json({ error: "Product not found" });
+    }
+    res.json(product);
+});
 router.get("/search", async (req, res) => {
     const q = (req.query.q || "").toString().trim();
     if (!q)
