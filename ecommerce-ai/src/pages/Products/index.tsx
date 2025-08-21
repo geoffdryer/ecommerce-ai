@@ -15,6 +15,7 @@ const Products = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
         fetch('/api/products')
@@ -32,12 +33,52 @@ const Products = () => {
             });
     }, []);
 
+    const [searching, setSearching] = useState(false);
+
+    const handleSearch = async () => {
+        if (!search.trim()) return;
+        setSearching(true);
+        setError(null);
+        try {
+            const res = await fetch(`/api/search?q=${encodeURIComponent(search)}`);
+            if (!res.ok) throw new Error('Search failed');
+            const data = await res.json();
+            setProducts(data);
+        } catch (err: unknown) {
+            if (err && typeof err === 'object' && 'message' in err) {
+                setError((err as { message: string }).message || 'Search failed');
+            } else {
+                setError('Search failed');
+            }
+        } finally {
+            setSearching(false);
+        }
+    };
+
     if (loading) return <div>Loading products...</div>;
     if (error) return <div>Error: {error}</div>;
 
     return (
         <div>
             <h2>Products</h2>
+            <div className="search-bar">
+                <input
+                    type="text"
+                    placeholder="Search products..."
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
+                    onKeyDown={e => {
+                        if (e.key === 'Enter') handleSearch();
+                    }}
+                    disabled={searching}
+                />
+                <button
+                    onClick={handleSearch}
+                    disabled={!search.trim() || searching}
+                >
+                    {searching ? 'Searching...' : 'Search'}
+                </button>
+            </div>
             <div className="products-list">
                 {products.map((product) => (
                     <div key={product.id} className="product-card">
