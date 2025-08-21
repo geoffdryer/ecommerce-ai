@@ -124,3 +124,74 @@
     object-fit: cover;
     border-radius: 0.25rem;
 }
+
+.product-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Add to cart - primary action, green */
+.product-actions .add-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    min-height: 44px;
+    padding: 0 1.1rem;
+    background: linear-gradient(180deg, #34d399 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 999px;
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 8px 20px -10px rgba(16, 185, 129, 0.55), inset 0 -2px 0 rgba(0, 0, 0, 0.06);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s;
+}
+
+/* ensure action items don't get pulled down by .product-card a margin-top */
+.product-actions .add-action,
+.product-actions a {
+    margin-top: 0;
+}
+
+.product-actions .add-action:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.02);
+}
+
+.product-actions .add-action:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px -8px rgba(16, 185, 129, 0.55);
+}
+
+/* View Details - secondary action, blue */
+.product-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    min-height: 44px;
+    padding: 0 1.1rem;
+    background: linear-gradient(180deg, #4f8cff 0%, #2352ff 100%);
+    color: #fff;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1;
+    box-shadow: 0 8px 20px -10px rgba(79, 140, 255, 0.55), inset 0 -2px 0 rgba(0,0,0,0.06);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.product-actions a:hover {
+    transform: translateY(-2px);
+}
+
+.product-actions a:active {
+    transform: translateY(0);
+}

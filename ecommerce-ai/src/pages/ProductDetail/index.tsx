@@ -51,7 +51,8 @@ const ProductDetail = () => {
             <p className="product-price">${Number(product.price).toFixed(2)}</p>
             <button className="add-to-cart-btn" onClick={() => addToCart(product)}>Add to cart</button>
             <br />
-            <Link to="/products">Back to Products</Link>
+            <Link to="/products">Back to Products</Link>&nbsp;|&nbsp;
+            <Link to="/cart">Go to Cart</Link>
         </div>
     );
 };

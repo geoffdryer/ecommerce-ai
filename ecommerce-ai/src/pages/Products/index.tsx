@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
 import type { Product } from '../../types/product';
 import './Products.scss';
 
@@ -27,6 +28,8 @@ const Products = () => {
     }, []);
 
     const [searching, setSearching] = useState(false);
+    const { addToCart } = useCart();
+    const [addingId, setAddingId] = useState<number | null>(null);
 
     const handleSearch = async () => {
         if (!search.trim()) return;
@@ -79,7 +82,20 @@ const Products = () => {
                         <h3>{product.name}</h3>
                         <p>{product.description}</p>
                         <p><strong>${product.price.toFixed(2)}</strong></p>
-                        <Link to={`/products/${product.id}`}>View Details</Link>
+                        <div className="product-actions">
+                            <Link to={`/products/${product.id}`}>View Details</Link>
+                            <button
+                                className="add-action"
+                                onClick={() => {
+                                    setAddingId(product.id);
+                                    addToCart(product);
+                                    setTimeout(() => setAddingId(null), 700);
+                                }}
+                                disabled={addingId === product.id}
+                            >
+                                {addingId === product.id ? 'Adding…' : 'Add'}
+                            </button>
+                        </div>
                     </div>
                 ))}
             </div>

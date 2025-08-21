@@ -23,7 +23,7 @@ export const products = [
     {
         id: 4,
         name: "Wireless Earbuds",
-        description: "Noise-cancelling wireless earbuds with long battery life.",
+        description: "Earbuds with long battery life.",
         price: 79.99,
         image: "https://picsum.photos/200/200?random=4",
     },
